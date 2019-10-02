@@ -67,4 +67,27 @@ public class Utils {
             e.printStackTrace();
         }
     }
+
+    public static void removeDuplicates(String filename, String outputName) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            String prevLine = "";
+            File fout = new File(outputName);
+            FileOutputStream fos = new FileOutputStream(fout);
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+            Counter counter = new Counter();
+            while ((line = br.readLine()) != null) {
+                if (!line.equals(prevLine)) {
+                    counter.increase();
+                    bw.write(line);
+                    bw.newLine();
+                    prevLine = line;
+                }
+            }
+            counter.print();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

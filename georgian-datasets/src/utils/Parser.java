@@ -1,13 +1,13 @@
 package utils;
 
-public class Parser {
+class Parser {
     private String parsed;
 
-    public Parser(String line) {
+    Parser(String line) {
         this.parsed = parse(line);
     }
 
-    public String getParsed() {
+    String getParsed() {
         return this.parsed;
     }
 
