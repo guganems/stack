@@ -12,6 +12,17 @@ class Parser {
     }
 
     private String parse(String line) {
-        return line.replaceAll("[^ქწჭერღტთყუიოპასდფგჰჯჟკლზძხცჩვბნმშ ]", "");
+        String parsed =  line.replaceAll("[^ქწჭერღტთყუიოპასდფგჰჯჟკლზძხცჩვბნმშ|}{\\[\\] ]",
+                "");
+        return replaceCharacters(parsed);
+    }
+
+    private String replaceCharacters(String parsed) {
+        parsed = parsed.replaceAll("[|]", " ");
+        parsed = parsed.replaceAll("[{]", " ");
+        parsed = parsed.replaceAll("[}]", " ");
+        parsed = parsed.replaceAll("[\\[]", " ");
+        parsed = parsed.replaceAll("[:]", " ");
+        return parsed.replaceAll("[]]", " ");
     }
 }

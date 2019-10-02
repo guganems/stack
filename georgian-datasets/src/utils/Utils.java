@@ -77,7 +77,7 @@ public class Utils {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
             Counter counter = new Counter();
             while ((line = br.readLine()) != null) {
-                if (!line.equals(prevLine)) {
+                if (!line.equals(prevLine) && !line.startsWith("კატეგორია") && !line.startsWith("ვიკიპედია") && !line.startsWith("ააა") && !line.startsWith("ფაილი")) {
                     counter.increase();
                     bw.write(line);
                     bw.newLine();
